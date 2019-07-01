@@ -18,18 +18,16 @@ public class MockController {
     @ResponseBody
     public String getmockByRequesturl(HttpServletRequest request){
         System.out.println("进入mock");
-        String requesturl= request.getRequestURI();
-        System.out.println("requesturl="+requesturl);
-    //        String requesturl= request.getParameter("requesturl");
-        if(requesturl==null){
-            return "请求参数不能为空";
-        }
-        MockCase mockCase= mockCaseService.getmockByRequesturl(requesturl);
-        String responses = mockCase.getResponses();
-        if(responses==null){
-            return "返回为null";
-        }
+        String requesturlStr= request.getRequestURI();
+        System.out.println("requesturl="+requesturlStr);
+        String requestURI = (String) request.getAttribute("requestURI");
+        //        String requesturl= request.getParameter("requesturl");
 
+        MockCase mockCase= mockCaseService.getmockByRequesturl(requestURI);
+        if(mockCase==null){
+            return "没有此urlMock";
+        }
+        String  responses = mockCase.getResponses();
         return responses;
     }
 

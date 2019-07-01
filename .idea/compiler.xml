@@ -9,5 +9,8 @@
         <module name="spring-boot-project-front-end-back-end" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-boot-project-front-end-back-end" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

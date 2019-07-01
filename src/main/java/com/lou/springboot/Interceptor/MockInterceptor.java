@@ -28,6 +28,7 @@ public class MockInterceptor implements  HandlerInterceptor  {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
         logger.info("您已经进入拦截器requestURI="+requestURI);
+        request.setAttribute("requestURI",requestURI);
         request.getRequestDispatcher("/mock").forward(request,response);
         return true;
 
